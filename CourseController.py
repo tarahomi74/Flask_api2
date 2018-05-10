@@ -1,9 +1,12 @@
 from flask import request
 from flask_restful import Resource
+
+from Auth import auth2
 from BaseModel import Curse
 
 
 class list(Resource):
+    @auth2.login_required
     def get(self):
         courses = Curse.select()
         ls = [dict(
@@ -35,4 +38,15 @@ class insertCurse(Resource):
 
         return dict(
             status=curse.save()
+        )
+
+class updateCurse(Resource):
+    def post(self):
+        request_json = request.get_json()
+        q=(Curse.update(
+            request_json
+        ).where(Curse.id == request_json['id']))
+
+        return dict(
+            status=q.execute()
         )
