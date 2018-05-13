@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import Api
+
+import ChoiceCourseController
 import CourseController
 import LoginController
 import  PorfossorController
@@ -14,6 +16,8 @@ api.add_resource(CourseController.updateCurse , '/updateCurse', endpoint=' updat
 api.add_resource(CourseController.insertCurse , '/insert', endpoint='insert')
 api.add_resource(PorfossorController.list , '/profossors' , endpoint='profossors')
 api.add_resource(LoginController.Login, '/login' , endpoint='Login')
+api.add_resource(ChoiceCourseController.list, '/chcourse' , endpoint='ChoiceCourses')
+
 
 
 if __name__ == '__main__':
