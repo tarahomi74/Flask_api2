@@ -151,12 +151,12 @@ class GroupCourse(BaseMolel):
 
 class ChoiceCourse(BaseMolel):
     id = PrimaryKeyField()
-    Student_student_number_id = ForeignKeyField(Student, backref='choice_course')
+    Student_student_number = IntegerField(11)
     status = EnumField(choices=["accept", "non_accept"])
     status_pay = EnumField(choices=["yes", "on"])
     score = FloatField()
     semeter = CharField(45)
-    Group_Course_code_course_id = ForeignKeyField(GroupCourse, backref='choice_course')
+    Group_Course_code_course = IntegerField(11)
 
     class Meta:
         db_table = "choice_course"
