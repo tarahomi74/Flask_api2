@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, g
 from flask_restful import Resource
 
 from Auth import auth2
@@ -40,13 +40,25 @@ class insertCurse(Resource):
             status=curse.save()
         )
 
+
 class updateCurse(Resource):
     def post(self):
         request_json = request.get_json()
-        q=(Curse.update(
+        q = (Curse.update(
             request_json
         ).where(Curse.id == request_json['id']))
 
         return dict(
             status=q.execute()
         )
+
+
+class Delete(Resource):
+    # @auth2.login_required
+    def delete(self, course_id):
+        try:
+            course = Curse.get(id=course_id)
+        except Curse.DoesNotExist:
+            return None, 404
+        course.delete_instance()
+        return dict(status=True, id=course_id), 200
