@@ -13,6 +13,7 @@ api = Api(app)
 
 api.add_resource(CourseController.list , '/courses', endpoint='courses')
 api.add_resource(CourseController.Delete , '/delete/<int:course_id>', endpoint='delete')
+api.add_resource(ChoiceCourseController.Delete , '/choicedelete/<int:course_id>', endpoint='choicedelete')
 api.add_resource(CourseController.updateCurse , '/updateCurse', endpoint=' updateCurse')
 api.add_resource(CourseController.insertCurse , '/insert', endpoint='insert')
 api.add_resource(PorfossorController.list , '/profossors' , endpoint='profossors')

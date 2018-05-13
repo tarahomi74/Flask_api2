@@ -18,3 +18,14 @@ class list(Resource):
         ) for c in chcourses
               ]
         return dict(ChoiceCourse=ls)
+
+
+class Delete(Resource):
+    @auth2.login_required
+    def delete(self, course_id):
+        try:
+            course = ChoiceCourse.get(id=course_id)
+        except ChoiceCourse.DoesNotExist:
+            return None, 404
+        course.delete_instance()
+        return dict(status=True, id=course_id), 200

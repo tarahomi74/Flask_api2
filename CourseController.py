@@ -54,7 +54,7 @@ class updateCurse(Resource):
 
 
 class Delete(Resource):
-    # @auth2.login_required
+    @auth2.login_required
     def delete(self, course_id):
         try:
             course = Curse.get(id=course_id)
