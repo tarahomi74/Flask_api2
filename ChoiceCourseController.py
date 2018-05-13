@@ -5,6 +5,7 @@ from BaseModel import ChoiceCourse
 
 
 class list(Resource):
+    @auth2.login_required
     def get(self):
         chcourses = ChoiceCourse.select()
         ls = [dict(

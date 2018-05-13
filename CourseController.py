@@ -24,6 +24,7 @@ class list(Resource):
 
 
 class insertCurse(Resource):
+    @auth2.login_required
     def post(self):
         request_json = request.get_json()
         curse = Curse()
@@ -42,6 +43,7 @@ class insertCurse(Resource):
 
 
 class updateCurse(Resource):
+    @auth2.login_required
     def post(self):
         request_json = request.get_json()
         q = (Curse.update(

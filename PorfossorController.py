@@ -1,8 +1,11 @@
 from flask_restful import Resource
+
+from Auth import auth2
 from BaseModel import profssor
 
 
 class list(Resource):
+    @auth2.login_required
     def get(self):
         profssors = profssor.select()
         ls = [dict(
