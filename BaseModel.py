@@ -123,9 +123,9 @@ class profssor (BaseMolel):
 
 class TimeCourse(BaseMolel):
     id = PrimaryKeyField()
-    days = IntegerField(30)
-    time = IntegerField(30)
-    classes = IntegerField(30)
+    days = CharField(255)
+    time = CharField(255)
+    classes = CharField(255)
     rotatory = EnumField(choices=['1', '2'])
     day_rotatory = EnumField(choices=['zoj', 'fard'])
 
@@ -160,3 +160,13 @@ class ChoiceCourse(BaseMolel):
 
     class Meta:
         db_table = "choice_course"
+
+
+class Mesal(BaseMolel):
+    id = PrimaryKeyField()
+    name = TextField()
+    family = TextField()
+    number = IntegerField(11)
+
+    class Meta:
+        db_table = "mesal"

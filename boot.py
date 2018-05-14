@@ -4,7 +4,9 @@ from flask_restful import Api
 import ChoiceCourseController
 import CourseController
 import LoginController
+import MesalController
 import  PorfossorController
+import TimeController
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,6 +21,9 @@ api.add_resource(CourseController.insertCurse , '/insert', endpoint='insert')
 api.add_resource(PorfossorController.list , '/profossors' , endpoint='profossors')
 api.add_resource(LoginController.Login, '/login' , endpoint='Login')
 api.add_resource(ChoiceCourseController.list, '/chcourse' , endpoint='ChoiceCourses')
+api.add_resource(TimeController.list, '/time' , endpoint='time')
+api.add_resource(MesalController.list, '/mesal' , endpoint='mesal')
+
 
 
 
